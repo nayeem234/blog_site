@@ -13,6 +13,10 @@
                 <li> Sports</li>
             </a>
 
+            <a href="{{url('contacts')}}">
+                <li>contact</li>
+            </a>
+
 
 
 

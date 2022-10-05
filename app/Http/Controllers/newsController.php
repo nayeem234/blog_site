@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use App\Models\Newses;
 
 class newsController extends Controller
@@ -39,9 +41,13 @@ class newsController extends Controller
     }
     function edit(Request $request)
     {
-        // return $request->all();
+        $imageName=time().'.'.$request->editImage->getgetClientOriginalExtension();
+        $file=Image::make($request->image)->resize(1200,800)->stream();
+        Storage::disk('public')->put('newsses' . '/' . $imageName, $file);
+
         $news = Newses::findOrfail($request->editId);
         $news->title = $request->title;
+        $news->image =  $imageName;
         $news->description = $request->description;
         $news->update();
         return redirect()->back();

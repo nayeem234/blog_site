@@ -7,11 +7,14 @@ use App\Http\Controllers\backendController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\AdminViewController;
+use App\Http\Controllers\contactController;
 use App\Http\Controllers\postController;
 use App\Http\Controllers\newsController;
 use App\Http\Controllers\sportsController;
 
+
 Route::get('/', [frontendController::class, 'front']);
+
 Route::get('newsPage', [frontendController::class, 'news']);
 Route::get('/backend', [backendController::class, 'backend']);
 
@@ -50,7 +53,6 @@ Route::post('newAdd', [newsController::class,'store']);
 Route::get('deleteNews/{id}', [newsController::class,'delete']);
 Route::get('editNews/{id}', [newsController::class,'preview']);
 Route::post('editNews',[newsController::class,'edit']);
-
 Route::get('newses1',[newsController::class,'add_model']);
 
 
@@ -59,9 +61,14 @@ Route::post('sportsAdd', [sportsController::class,'store']);
 Route::get('deleteSports/{id}', [sportsController::class,'delete']);
 Route::get('editSports/{id}', [sportsController::class,'preview']);
 Route::post('editSports',[sportsController::class,'edit']);
-
 Route::get('sports1',[sportsController::class,'add_sports']);
 
+Route::get('contacts',[contactController::class,'index']);
+Route::post('datacontact',[contactController::class,'store']);
+Route::get('contact1',[contactController::class,'add_modal']);
+Route::get('deleteContact/{id}',[contactController::class,'delete']);
+Route::get('editContact/{id}',[contactController::class,'preview']);
+Route::post('updateContact',[contactController::class,'edit']);
 
 
 

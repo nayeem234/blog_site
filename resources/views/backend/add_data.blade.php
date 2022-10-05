@@ -20,7 +20,6 @@
                         placeholder="Description">
                 </div>
                 <button type="submit" class="btn btn-primary">Add Post</button>
-
             </form>
         </div>
     </div>

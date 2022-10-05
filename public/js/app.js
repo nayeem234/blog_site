@@ -55,3 +55,25 @@ $(".editSports").click(function () {
 $('#closeBtn').click(function(){
     $('#editSports').modal('hide');
 });
+
+
+
+$(".editcontact").click(function () {
+    let id = $(this).data("id");
+    $('#editContact').modal('show');
+
+    axios.get("editContact/"+id).then(function (response) {
+        let data = response.data;
+            $('#email').val(data[0].email);
+            $('#Contact').val(data[0].contact_number);
+            $('#Address').val(data[0].address);
+            $('#editId').val(data[0].id);
+
+        })
+        .catch(function (error) {
+            console.log(error)
+        });
+});
+$('#closeBtn').click(function(){
+    $('#editContact').modal('hide');
+});
